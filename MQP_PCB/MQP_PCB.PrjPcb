@@ -92,7 +92,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=2
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -103,12 +103,12 @@ GenerateClassCluster=0
 DocumentUniqueId=GBMHIMXK
 
 [Parameter1]
-Name=Revision
-Value=1
-
-[Parameter2]
 Name=Author
 Value=Kyle Rabbitt
+
+[Parameter2]
+Name=Revision
+Value=1
 
 [Configuration1]
 Name=Sources
