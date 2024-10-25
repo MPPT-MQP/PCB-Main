@@ -120,7 +120,7 @@ GenerateClassCluster=0
 DocumentUniqueId=WQNDMLVC
 
 [Document5]
-DocumentPath=LDOs.SchDoc
+DocumentPath=Voltage Regulator.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
