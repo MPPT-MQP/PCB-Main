@@ -154,7 +154,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document7]
-DocumentPath=TestingChargeController.SchDoc
+DocumentPath=Charge Controller.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
