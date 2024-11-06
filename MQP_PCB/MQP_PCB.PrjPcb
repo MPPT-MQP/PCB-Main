@@ -204,6 +204,23 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UAXEAEEF
 
+[Document10]
+DocumentPath=PCB_Main.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=FSVNXUOU
+
 [GeneratedDocument1]
 DocumentPath=Project Outputs for MQP_PCB\Design Rule Check - 630-DC2044B_REV01_DESIGN_LAYOUT.html
 DItemRevisionGUID=
