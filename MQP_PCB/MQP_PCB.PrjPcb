@@ -171,23 +171,6 @@ GenerateClassCluster=0
 DocumentUniqueId=JCQESHZD
 
 [Document8]
-DocumentPath=Charge Controller.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=8
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=0
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=MOLDYMFC
-
-[Document9]
 DocumentPath=630-DC2044B_REV01_DESIGN_LAYOUT.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -204,7 +187,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UAXEAEEF
 
-[Document10]
+[Document9]
 DocumentPath=PCB_Main.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -221,7 +204,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FSVNXUOU
 
-[Document11]
+[Document10]
 DocumentPath=FCC Footprint Charge Controller.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -238,8 +221,25 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QURKNHGS
 
+[Document11]
+DocumentPath=..\..\..\..\Downloads\altium\BM03B_SRSS_TB_LF__SN_\AltiumDesigner\BM03B-SRSS-TBLFSN.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [Document12]
-DocumentPath=..\..\..\..\..\..\Downloads\altium\BM03B_SRSS_TB_LF__SN_\AltiumDesigner\BM03B-SRSS-TBLFSN.PcbLib
+DocumentPath=..\..\..\..\Downloads\altium\BM03B_SRSS_TB_LF__SN_\AltiumDesigner\BM03B-SRSS-TBLFSN.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -256,24 +256,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document13]
-DocumentPath=..\..\..\..\..\..\Downloads\altium\BM03B_SRSS_TB_LF__SN_\AltiumDesigner\BM03B-SRSS-TBLFSN.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=0
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document14]
-DocumentPath=..\..\..\..\..\..\Downloads\ul_TLVM23625RDNR\AltiumDesigner\TLVM23625RDNR.PcbLib
+DocumentPath=..\..\..\..\Downloads\ul_TLVM23625RDNR\AltiumDesigner\TLVM23625RDNR.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -289,8 +272,8 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HRYMPCRI
 
-[Document15]
-DocumentPath=..\..\..\..\..\..\Downloads\altium\PPTC041LFBN_RC\AltiumDesigner\PPTC041LFBN-RC.PcbLib
+[Document14]
+DocumentPath=..\..\..\..\Downloads\altium\PPTC041LFBN_RC\AltiumDesigner\PPTC041LFBN-RC.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
