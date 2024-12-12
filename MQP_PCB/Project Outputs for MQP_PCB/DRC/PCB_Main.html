@@ -1,0 +1,559 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+        h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+            padding: 0.3em;
+        }
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+        body {
+			font-family : segoe ui;
+        }
+
+        td, th {
+            padding: 0.5em;
+			text-align : left;
+			width: 10em;
+        }
+        th {
+			background-color : #EEEEEE;
+
+        }
+        th.column1, td.column1 {
+            text-align: left;
+            width : auto;
+        }
+        table {
+            width : 100%;
+			font-size: 0.9em;
+        }
+        
+        .DRC_summary_header {                           
+            padding-bottom : 0.1em;
+            border : 0px solid black;                           
+            width: 100%;
+			align: left;
+        }
+
+        .DRC_summary_header_col1, 
+        .DRC_summary_header_col2, 
+        .DRC_summary_header_col3  {
+            color : black;
+            font-size:100%;
+                        padding : 0em;
+            padding-top : 0.2em;
+            padding-bottom 0.2em;
+            border : 0px solid black;
+            vertical-align: top;
+			text-align: left;
+        }
+        
+        .DRC_summary_header_col1 {                              
+			font-weight: bold;
+			width: 8em;
+        }
+
+        .DRC_summary_header_col2 {       
+			width: 0.1em;
+		
+        }
+
+        .DRC_summary_header_col3 {       
+			width : auto;
+        }
+
+        .header_holder  {
+        Width = 100%;
+        border = 0px solid green;
+        padding = 0;
+        }
+        
+        
+        .front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+            left:0;
+            top:0;
+			padding: 0em;
+            padding-top : 0.1em;            
+            border : 0px solid black;
+            width : 100%;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .front_matter_column1 {
+            width : 8em;   
+			font-weight: bold;
+        }
+        
+        .front_matter_column2 {
+            width: 0.1em;
+        }
+
+        .front_matter_column3 {
+            width         : auto;  
+        }
+        
+        .total_column1, .total_column {
+            font-weight : bold;
+        }
+        .total_column1 {
+			text-align : left;
+        }
+        .warning, .error {
+            color : red;
+            font-weight : bold;
+        }
+        tr.onmouseout_odd {
+			background-color : #white;
+        }
+        tr.onmouseout_even { 
+			background-color : #FAFAFA;
+        }
+        tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+        } 
+        a:link, a:visited, .q a:link,.q a:active,.q {
+            color: #21489e; 
+        }
+        a:link.callback, a:visited.callback { 
+            color: #21489e; 
+        }
+        p.contents_level1 {
+            font-weight : bold;
+            font-size : 110%;
+            margin : 0.5em;
+        }
+        p.contents_level2 {
+            position : relative;
+            left : 20px;
+            margin : 0.5em;
+        }
+    </style><script type="text/javascript">
+        function coordToMils(coord) {
+            var number = coord / 10000;
+            
+            if (number != number.toFixed(3))
+                number = number.toFixed(3);
+
+            return number + 'mil'
+        }
+
+        function coordToMM(coord) {
+            var number = 0.0254 * coord / 10000;
+            
+            if (number != number.toFixed(4))
+                number = number.toFixed(4);
+            
+            return number + 'mm'
+        }
+    
+        function convertCoord(coordNode, units) {
+            for (var i = 0; i < coordNode.childNodes.length; i++) {
+                coordNode.removeChild(coordNode.childNodes[i]);
+            }
+
+            var coord = coordNode.getAttribute('value');
+            if (coord != null) {
+                if (units == 'mm') {
+                    textNode = document.createTextNode(coordToMM(coord));
+                    coordNode.appendChild(textNode);
+                } else if (units == 'mil') {
+                    textNode = document.createTextNode(coordToMils(coord));     
+                    coordNode.appendChild(textNode);    
+                }
+            }
+        }
+    
+        function convertUnits(unitNode, units) {
+            for (var i = 0; i < unitNode.childNodes.length; i++) {
+                unitNode.removeChild(unitNode.childNodes[i]);       
+            }
+        
+            textNode = document.createTextNode(units); 
+            unitNode.appendChild(textNode);
+        }
+    
+        function changeUnits(radio_input, units) {
+            if (radio_input.checked) {
+            
+                var elements = document.getElementsByName('coordinate');
+                if (elements) {
+                    for (var i = 0; i < elements.length; i++) {
+                        convertCoord(elements[i], units);
+                    }
+                }
+    
+                var elements = document.getElementsByName('units');
+                if (elements) {
+                    for (var i = 0; i < elements.length; i++) {
+                        convertUnits(elements[i], units);
+                    }
+                }
+            }
+        }
+    </script></head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD23\Templates\AD_logo.png
+        "><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12/11/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10:18:36 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc" class="file"><acronym title="C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc">C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">51</td></tr>
+</table>
+</td>
+</table><a name="IDDESAYRRW5R30T20PMHT3KBUNLHRKN22MBMIEEJX4RSUU3JGM0DK"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIHFK2ZSNHAHLINFTH2U2MKHFWE11DQCQS2NNYQNNT4PIMQ2CMV2">Clearance Constraint (Gap=10mil) (WithinRoom('CHARGE_ROOM')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGLSXL4LYUJ1GL30GNYOAJSF1RI10KX5XZNCIAYKEICFSMANNPMAL">Clearance Constraint (Gap=0mil) (InComponent('U4')),(InComponent('U4'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4CLH4JWUMOQBCSQWFTIGXOMCBNMSNT1LSYU1YGOQCOJ5XD2EU1VC">Clearance Constraint (Gap=5mil) (InComponent('U3')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAJGEYFU0PF5AL14JVUXBFJMIFJYOVJMEKLXM0WBRRRCXTVBPOL0P">Clearance Constraint (Gap=0mil) ((InNetClass('GateDriver')or InNet('GND')) and (Name like U1)),((InNetClass('GateDriver')or InNet('GND')) and (Name like U1))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDYGVIBCQTSG3ER1I5S11N4A2REWOZZRH0FMOLYF1YTU1U1YSACKG">Clearance Constraint (Gap=10mil) (InComponent('U4')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLJ50RLVWKICRBOOD0FBORBUNEFCADTX50IMJVJG0QCHTTAWB13UI">Clearance Constraint (Gap=10mil) (WithinRoom('GATE_DRIVER')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1YSZQBNNCWZRMPWYGEW53ZJM2E1QEPSXBFK3SZMVI0FZKGMW0AWH">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQUXJWVV05VAHKG2CFS00E0M3PO3J4CY3IHRTUTHIEXF0YGPXQK2D">Clearance Constraint (Gap=10mil) (InComponent('U1')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAE2UYO4JAYXJLPUCTGF0GND2HYVTWO0DOSISYLNJ1LFMHE1EMVE">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHUDRQ3FN0MF0DOK4BP4BIBYWEPZG5WD01FJJ0KK252DMC2GBILOB">Short-Circuit Constraint (Allowed=Yes) (WithinRoom('GND_SIGNAL_SHORT')),(WithinRoom('GND_SIGNAL_SHORT'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVJVRJXGT20RM501HU2PSSWXKJSTWLNZSBDYY2NVMNOA5K3ODJAL">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID02NBOK1QBJCZJOTKL2FINSQFKHA5MUQEULS1SB552LHVUODPTHL">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYTNFJ5IJT4HPDLVFEYYHER44YWP2FC3YDPOHPGWFWHFPI0AJSBH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSKLCPEK5GTGNHB432VKDTONL5LGLJYMF0BP4BWNJ2T2ALHQ10UYF">Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIVOJ1L0FGOX0M3DPAMESTY14SREEFAWFOSSKGXLFKSJ4QVA1LO">Width Constraint (Min=10mil) (Max=200mil) (Preferred=10mil) (InNet('SW'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDDAIMWNQMWLKBDJHMWT5N2LWUJKCI0TIBQY3ALCFMOHEXVQPPLDC">Width Constraint (Min=10mil) (Max=50mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2WVMTPYERCGQ35A4XFQL2DR2ERCUICO2US4NFHNYCT5POMU20SN">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3KMSZGZSI3HRDYUCQPITCCA0WJFZVRU1MUHB4HNR4YNYKAW2DFM">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVQSW4KVNKWRS3TAAIIF1NBADYETNXPFCPQXFCTOM3CMBQEUOJ">Hole Size Constraint (Min=1mil) (Max=150mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDD3CCARIMA1MIQYZV1GE12S1CFCCN142JHPDSGDC1IAXTYDH2EIB">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3MMPHB3TH45BMMC2KIJEZFGHAMHPK5UAZNJD1DFLZBWBTWY42DEC">Minimum Solder Mask Sliver (Gap=3mil) (All),(All)</a></td>
+<td class="column2">10</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSIXLWCFUH1UEDVFB545IPNPE0MIOYOIE2Z0YSSDMARHFWUBTO0Q">Silk To Solder Mask (Clearance=4mil) (IsPad),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2IVS5MTGROTYC3HSOIEXPG4RRE4S2NVBTSN1MGBKP0EGXEUCJAG">Silk to Silk (Clearance=6mil) (All),(All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDS240BXHU0AG5ICL2OIMYESIPBLG4333UHA4ZCQHFBKBKEOEZHRQC">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIJMX0XBLTCFWIHBJX2KQLRD41PVZAAGJV25K0QEYT3QZPMSYPGC">Net Antennae (Tolerance=151mil) (WithinRoom('GND_SIGNAL_SHORT'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDABREW0ENV03QHKKP4CHKISS2ND5AKLIWQJOWXHGV42VJ0RN03QOC">Room GND_SIGNAL_SHORT (Bounding Region = (3830mil, 4230mil, 3870mil, 4405mil) (False)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDH2ZCUBFJD4YGPMBKG2KAXPNNLIJGV54DJNENIUF0X4ZDN1WTM5IN">Room CHARGE_ROOM (Bounding Region = (3647.284mil, 4187.992mil, 4050mil, 4640mil) (False)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBSY53CJBH5EMIOLFWOMZX2RMJLJNL2R2ILASV4MDJJLJQ24ITC2F">Room GATE_DRIVER (Bounding Region = (3285mil, 2675mil, 3460mil, 2985mil) (False)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLISRJ5P5JERYNZD5WGI4KYFTLJERW4BRTVQ52VIYD0FTEPHUIH3G">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTX1A2H30SBURBOIED54RGH2TBP2EX14PPN4X3EIQAFJKXNBCHTLN">Height Constraint (Min=0mil) (Max=10000mil) (Prefered=5000mil) (InComponent('L1'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">51</td>
+</tr>
+</table><br><a name="IDVJVRJXGT20RM501HU2PSSWXKJSTWLNZSBDYY2NVMNOA5K3ODJAL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J5-10(450mil,4670mil) on Multi-Layer And Polygon Region (134 hole(s)) GND2 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J5-10(450mil,4670mil) on Multi-Layer And Polygon Region (150 hole(s)) GND1 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J5-9(900mil,4670mil) on Multi-Layer And Polygon Region (134 hole(s)) GND2 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J5-9(900mil,4670mil) on Multi-Layer And Polygon Region (150 hole(s)) GND1 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP1-(5820mil,4890mil) on Multi-Layer And Polygon Region (134 hole(s)) GND2 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP1-(5820mil,4890mil) on Multi-Layer And Polygon Region (150 hole(s)) GND1 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP1-(5820mil,4890mil) on Multi-Layer And Polygon Region (75 hole(s)) Bottom Layer Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP2-(180mil,4920mil) on Multi-Layer And Polygon Region (134 hole(s)) GND2 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP2-(180mil,4920mil) on Multi-Layer And Polygon Region (150 hole(s)) GND1 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP2-(180mil,4920mil) on Multi-Layer And Polygon Region (75 hole(s)) Bottom Layer Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP3-(200mil,200mil) on Multi-Layer And Polygon Region (134 hole(s)) GND2 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP3-(200mil,200mil) on Multi-Layer And Polygon Region (150 hole(s)) GND1 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP3-(200mil,200mil) on Multi-Layer And Polygon Region (75 hole(s)) Bottom Layer Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP4-(5800mil,200mil) on Multi-Layer And Polygon Region (134 hole(s)) GND2 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP4-(5800mil,200mil) on Multi-Layer And Polygon Region (150 hole(s)) GND1 Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad MP4-(5800mil,200mil) on Multi-Layer And Polygon Region (75 hole(s)) Bottom Layer Location : [X = 0mil][Y = 0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3MMPHB3TH45BMMC2KIJEZFGHAMHPK5UAZNJD1DFLZBWBTWY42DEC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=3mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3585.064mil|Location2.X=3589.314mil|Location1.Y=4496.875mil|Location2.Y=4501.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3585.064mil|Location2.X=3589.314mil|Location1.Y=4496.875mil|Location2.Y=4501.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.874mil &lt; 3mil) Between Pad R29-1(2602mil,3482.268mil) on Bottom Layer And Pad R29-2(2602mil,3515.732mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4725.6mil|Location2.X=4729.85mil|Location1.Y=1264.611mil|Location2.Y=1268.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4725.6mil|Location2.X=4729.85mil|Location1.Y=1264.611mil|Location2.Y=1268.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.102mil &lt; 3mil) Between Pad R30-1(3735mil,287.52mil) on Top Layer And Pad R35-2(3746.472mil,243mil) on Top Layer [Top Solder] Mask Sliver [2.102mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3402.403mil|Location2.X=3406.653mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3402.403mil|Location2.X=3406.653mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.873mil &lt; 3mil) Between Pad U1-1(2414.37mil,1937.598mil) on Top Layer And Pad U1-2(2394.686mil,1937.598mil) on Top Layer [Top Solder] Mask Sliver [1.873mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3402.403mil|Location2.X=3406.653mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3402.403mil|Location2.X=3406.653mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.873mil &lt; 3mil) Between Pad U1-10(2414.37mil,1762.402mil) on Top Layer And Pad U1-9(2394.686mil,1762.402mil) on Top Layer [Top Solder] Mask Sliver [1.873mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3382.718mil|Location2.X=3386.968mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3382.718mil|Location2.X=3386.968mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.875mil &lt; 3mil) Between Pad U1-2(2394.686mil,1937.598mil) on Top Layer And Pad U1-3(2375mil,1937.598mil) on Top Layer [Top Solder] Mask Sliver [1.875mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.033mil|Location2.X=3367.283mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.033mil|Location2.X=3367.283mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.873mil &lt; 3mil) Between Pad U1-3(2375mil,1937.598mil) on Top Layer And Pad U1-4(2355.316mil,1937.598mil) on Top Layer [Top Solder] Mask Sliver [1.873mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.348mil|Location2.X=3347.598mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.348mil|Location2.X=3347.598mil|Location1.Y=2960.099mil|Location2.Y=2964.349mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.875mil &lt; 3mil) Between Pad U1-4(2355.316mil,1937.598mil) on Top Layer And Pad U1-5(2335.63mil,1937.598mil) on Top Layer [Top Solder] Mask Sliver [1.875mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.348mil|Location2.X=3347.598mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.348mil|Location2.X=3347.598mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.875mil &lt; 3mil) Between Pad U1-6(2335.63mil,1762.402mil) on Top Layer And Pad U1-7(2355.316mil,1762.402mil) on Top Layer [Top Solder] Mask Sliver [1.875mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.033mil|Location2.X=3367.283mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.033mil|Location2.X=3367.283mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.873mil &lt; 3mil) Between Pad U1-7(2355.316mil,1762.402mil) on Top Layer And Pad U1-8(2375mil,1762.402mil) on Top Layer [Top Solder] Mask Sliver [1.873mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3382.718mil|Location2.X=3386.968mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3382.718mil|Location2.X=3386.968mil|Location1.Y=2784.903mil|Location2.Y=2789.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.875mil &lt; 3mil) Between Pad U1-8(2375mil,1762.402mil) on Top Layer And Pad U1-9(2394.686mil,1762.402mil) on Top Layer [Top Solder] Mask Sliver [1.875mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDSIXLWCFUH1UEDVFB545IPNPE0MIOYOIE2Z0YSSDMARHFWUBTO0Q"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=4mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3690.219mil|Location2.X=3697.273mil|Location1.Y=4270.49mil|Location2.Y=4277.508mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3690.219mil|Location2.X=3697.273mil|Location1.Y=4270.49mil|Location2.Y=4277.508mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.35mil &lt; 4mil) Between Arc (2700.155mil,3281.732mil) on Bottom Overlay And Pad C29-1(2675mil,3260mil) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.35mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4104.869mil|Location2.X=4110.119mil|Location1.Y=4403.039mil|Location2.Y=4408.289mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4104.869mil|Location2.X=4110.119mil|Location1.Y=4403.039mil|Location2.Y=4408.289mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.016mil &lt; 4mil) Between Pad C31-2(3093.873mil,3396mil) on Bottom Layer And Text "C31" (3119.998mil,3410.663mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [3.016mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4179.307mil|Location2.X=4184.557mil|Location1.Y=4509.877mil|Location2.Y=4515.127mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4179.307mil|Location2.X=4184.557mil|Location1.Y=4509.877mil|Location2.Y=4515.127mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.15mil &lt; 4mil) Between Pad C32-1(3157.548mil,3515mil) on Bottom Layer And Text "C32" (3224.994mil,3512.502mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [3.15mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3989.698mil|Location2.X=3994.948mil|Location1.Y=4053.064mil|Location2.Y=4058.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3989.698mil|Location2.X=3994.948mil|Location1.Y=4053.064mil|Location2.Y=4058.314mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.008mil &lt; 4mil) Between Pad D8-C(3010.039mil,3035mil) on Top Layer And Track (2866.26mil,3060.63mil)(3043.425mil,3060.63mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.008mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1834.706mil|Location2.X=1839.956mil|Location1.Y=1949.202mil|Location2.Y=1954.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1834.706mil|Location2.X=1839.956mil|Location1.Y=1949.202mil|Location2.Y=1954.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.678mil &lt; 4mil) Between Pad PINA1-1(837.322mil,967.166mil) on Top Layer And Text "*" (862.323mil,915.665mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.678mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1852.01mil|Location2.X=1857.26mil|Location1.Y=1949.183mil|Location2.Y=1954.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1852.01mil|Location2.X=1857.26mil|Location1.Y=1949.183mil|Location2.Y=1954.433mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.785mil &lt; 4mil) Between Pad PINA1-2(860.944mil,967.166mil) on Top Layer And Text "*" (862.323mil,915.665mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.785mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4638.706mil|Location2.X=4643.956mil|Location1.Y=2687.202mil|Location2.Y=2692.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4638.706mil|Location2.X=4643.956mil|Location1.Y=2687.202mil|Location2.Y=2692.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.678mil &lt; 4mil) Between Pad PINA2-1(3641.322mil,1705.166mil) on Top Layer And Text "*" (3666.323mil,1653.665mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.678mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4656.01mil|Location2.X=4661.26mil|Location1.Y=2687.183mil|Location2.Y=2692.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4656.01mil|Location2.X=4661.26mil|Location1.Y=2687.183mil|Location2.Y=2692.433mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.785mil &lt; 4mil) Between Pad PINA2-2(3664.944mil,1705.166mil) on Top Layer And Text "*" (3666.323mil,1653.665mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.785mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6592.896mil|Location2.X=6598.146mil|Location1.Y=3008.382mil|Location2.Y=3013.632mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6592.896mil|Location2.X=6598.146mil|Location1.Y=3008.382mil|Location2.Y=3013.632mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.678mil &lt; 4mil) Between Pad PINA3-1(5595.512mil,1995.668mil) on Bottom Layer And Text "*" (5620.513mil,2047.169mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [2.678mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6610.2mil|Location2.X=6615.45mil|Location1.Y=3008.401mil|Location2.Y=3013.651mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6610.2mil|Location2.X=6615.45mil|Location1.Y=3008.401mil|Location2.Y=3013.651mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.785mil &lt; 4mil) Between Pad PINA3-2(5619.134mil,1995.668mil) on Bottom Layer And Text "*" (5620.513mil,2047.169mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [2.785mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4708.381mil|Location2.X=4713.631mil|Location1.Y=1368.483mil|Location2.Y=1373.733mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4708.381mil|Location2.X=4713.631mil|Location1.Y=1368.483mil|Location2.Y=1373.733mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.79mil &lt; 4mil) Between Pad R30-2(3735mil,352.48mil) on Top Layer And Text "R30" (3711.006mil,374.502mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.79mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.123mil|Location2.X=4113.373mil|Location1.Y=4586.031mil|Location2.Y=4591.281mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.123mil|Location2.X=4113.373mil|Location1.Y=4586.031mil|Location2.Y=4591.281mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.317mil &lt; 4mil) Between Pad R41-1(3095mil,3610mil) on Bottom Layer And Text "R50" (3114.994mil,3570.502mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [3.317mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4144.423mil|Location2.X=4149.673mil|Location1.Y=4479.873mil|Location2.Y=4485.123mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4144.423mil|Location2.X=4149.673mil|Location1.Y=4479.873mil|Location2.Y=4485.123mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.916mil &lt; 4mil) Between Pad R46-1(3137.716mil,3473mil) on Bottom Layer And Text "R46" (3189.994mil,3467.502mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [2.916mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4099.709mil|Location2.X=4104.959mil|Location1.Y=4457.469mil|Location2.Y=4462.719mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4099.709mil|Location2.X=4104.959mil|Location1.Y=4457.469mil|Location2.Y=4462.719mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.191mil &lt; 4mil) Between Pad R46-2(3102.284mil,3473mil) on Bottom Layer And Text "R48" (3117.329mil,3448.002mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [2.191mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.4mil|Location2.X=4105.65mil|Location1.Y=4359.043mil|Location2.Y=4364.293mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.4mil|Location2.X=4105.65mil|Location1.Y=4359.043mil|Location2.Y=4364.293mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.953mil &lt; 4mil) Between Pad R52-2(3092.833mil,3364mil) on Bottom Layer And Text "R52" (3114.998mil,3378.329mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [1.953mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4119.032mil|Location2.X=4124.282mil|Location1.Y=4406.372mil|Location2.Y=4411.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4119.032mil|Location2.X=4124.282mil|Location1.Y=4406.372mil|Location2.Y=4411.622mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.317mil &lt; 4mil) Between Pad R55-1(3142mil,3404.528mil) on Bottom Layer And Text "C31" (3119.998mil,3410.663mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [1.317mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID2IVS5MTGROTYC3HSOIEXPG4RRE4S2NVBTSN1MGBKP0EGXEUCJAG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=6mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3390.973mil|Location2.X=3395.973mil|Location1.Y=3139.004mil|Location2.Y=3144.004mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3390.973mil|Location2.X=3395.973mil|Location1.Y=3139.004mil|Location2.Y=3144.004mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 6mil) Between Arc (2401.968mil,2150mil) on Top Overlay And Text "C2" (2300.016mil,2085.01mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4876.715mil|Location2.X=4883.965mil|Location1.Y=2559.97mil|Location2.Y=2567.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4876.715mil|Location2.X=4883.965mil|Location1.Y=2559.97mil|Location2.Y=2567.22mil|Absolute=True">Silk To Silk Clearance Constraint: (2.853mil &lt; 6mil) Between Arc (3900mil,1235mil) on Top Overlay And Text "PINA2" (3610.044mil,1570.01mil) on Top Overlay Silk Text to Silk Clearance [2.853mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4618.519mil|Location2.X=4626.459mil|Location1.Y=2685.619mil|Location2.Y=2693.718mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4618.519mil|Location2.X=4626.459mil|Location1.Y=2685.619mil|Location2.Y=2693.718mil|Absolute=True">Silk To Silk Clearance Constraint: (3.773mil &lt; 6mil) Between Text "*" (3666.323mil,1653.665mil) on Top Overlay And Track (3618.5mil,1692.5mil)(3618.5mil,1737.4mil) on Top Overlay Silk Text to Silk Clearance [3.773mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6572.709mil|Location2.X=6580.724mil|Location1.Y=3007.183mil|Location2.Y=3015.215mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6572.709mil|Location2.X=6580.724mil|Location1.Y=3007.183mil|Location2.Y=3015.215mil|Absolute=True">Silk To Silk Clearance Constraint: (3.773mil &lt; 6mil) Between Text "*" (5620.513mil,2047.169mil) on Bottom Overlay And Track (5572.69mil,1963.434mil)(5572.69mil,2008.334mil) on Bottom Overlay Silk Text to Silk Clearance [3.773mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1814.519mil|Location2.X=1822.459mil|Location1.Y=1947.619mil|Location2.Y=1955.718mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1814.519mil|Location2.X=1822.459mil|Location1.Y=1947.619mil|Location2.Y=1955.718mil|Absolute=True">Silk To Silk Clearance Constraint: (3.773mil &lt; 6mil) Between Text "*" (862.323mil,915.665mil) on Top Overlay And Track (814.5mil,954.5mil)(814.5mil,999.4mil) on Top Overlay Silk Text to Silk Clearance [3.773mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4084.457mil|Location2.X=4091.707mil|Location1.Y=4452.707mil|Location2.Y=4459.957mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4084.457mil|Location2.X=4091.707mil|Location1.Y=4452.707mil|Location2.Y=4459.957mil|Absolute=True">Silk To Silk Clearance Constraint: (3.177mil &lt; 6mil) Between Text "C33" (3084.994mil,3447.502mil) on Bottom Overlay And Text "R48" (3117.329mil,3448.002mil) on Bottom Overlay Silk Text to Silk Clearance [3.177mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6047.177mil|Location2.X=6054.427mil|Location1.Y=3541.38mil|Location2.Y=3548.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6047.177mil|Location2.X=6054.427mil|Location1.Y=3541.38mil|Location2.Y=3548.63mil|Absolute=True">Silk To Silk Clearance Constraint: (1.626mil &lt; 6mil) Between Text "R11" (4982.511mil,2545.005mil) on Top Overlay And Track (5055.552mil,2542.378mil)(5055.552mil,2618.066mil) on Top Overlay Silk Text to Silk Clearance [1.626mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3971.369mil|Location2.X=3978.619mil|Location1.Y=4625.618mil|Location2.Y=4632.868mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3971.369mil|Location2.X=3978.619mil|Location1.Y=4625.618mil|Location2.Y=4632.868mil|Absolute=True">Silk To Silk Clearance Constraint: (0.491mil &lt; 6mil) Between Text "R36" (2974.994mil,3612.502mil) on Bottom Overlay And Track (2939.119mil,3633.425mil)(2989.216mil,3633.425mil) on Bottom Overlay Silk Text to Silk Clearance [0.491mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDS240BXHU0AG5ICL2OIMYESIPBLG4333UHA4ZCQHFBKBKEOEZHRQC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4898.5mil|Location2.X=4972.158mil|Location1.Y=5858.5mil|Location2.Y=5976.779mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\PCB_Main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4898.5mil|Location2.X=4972.158mil|Location1.Y=5858.5mil|Location2.Y=5976.779mil|Absolute=True">Net Antennae: Via (3930mil,4890mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

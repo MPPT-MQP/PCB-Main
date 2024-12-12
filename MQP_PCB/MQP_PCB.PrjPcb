@@ -324,11 +324,99 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for MQP_PCB\Design Rule Check - 630-DC2044B_REV01_DESIGN_LAYOUT.html
+DocumentPath=Project Outputs for Free Documents\BOM\Bill of Materials-PCB_Main.xlsx
 DItemRevisionGUID=
 
 [GeneratedDocument2]
+DocumentPath=Project Outputs for MQP_PCB\BOM\Bill of Materials-PCB_Main.xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for MQP_PCB\Design Rule Check - 630-DC2044B_REV01_DESIGN_LAYOUT.html
+DItemRevisionGUID=
+
+[GeneratedDocument4]
 DocumentPath=Project Outputs for MQP_PCB\Design Rule Check - PCB_Main.html
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for Free Documents\ERC\MQP_PCB.html
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for MQP_PCB\ERC\MQP_PCB.html
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for Free Documents\NC Drill\PCB_Main.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for MQP_PCB\NC Drill\PCB_Main.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_Main.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for MQP_PCB\Gerber\PCB_Main.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for Free Documents\DRC\PCB_Main.html
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for MQP_PCB\DRC\PCB_Main.html
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for Free Documents\NC Drill\PCB_Main.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for MQP_PCB\NC Drill\PCB_Main.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for Free Documents\PCB 3D Print\PCB_Main.png
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for MQP_PCB\PCB 3D Print\PCB_Main.png
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_Main.REP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for MQP_PCB\Gerber\PCB_Main.REP
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for Free Documents\NC Drill\PCB_Main.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for MQP_PCB\NC Drill\PCB_Main.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for Free Documents\Pick Place\Pick Place for PCB_Main.csv
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for MQP_PCB\Pick Place\Pick Place for PCB_Main.csv
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Project Outputs for Free Documents\Pick Place\Pick Place for PCB_Main.txt
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for MQP_PCB\Pick Place\Pick Place for PCB_Main.txt
 DItemRevisionGUID=
 
 [Parameter1]
