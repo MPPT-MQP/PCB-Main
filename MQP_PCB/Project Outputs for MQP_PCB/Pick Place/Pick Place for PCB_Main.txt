@@ -4,9 +4,9 @@ C:\Users\temp\Documents\WPI\MQP\Github\MPPT_MQP_PCB\MQP_PCB\Project Outputs for 
 ========================================================================================================================
 File Design Information:
 
-Date:       11/12/24
-Time:       22:22
-Revision:   d50ad3f2856d69788b52da5ca8f37fa67fb4ab33
+Date:       12/12/24
+Time:       09:04
+Revision:   9a842ea01694f7eb6fb66053fcf07955a8149399
 Variant:    No variations
 Units used: mil
 
@@ -157,7 +157,7 @@ J5         54602-908LF        TopLayer    CONN8_2-908LF_AMP             675.000 
 J4         TB001-500-02BE     TopLayer    CUI_TB001-500-02BE            250.000       2078.425      90       "2~24 Poles, Screw Type, Horizontal, 5.0 Pitch, 22~12 (AWG), Terminal Block Connector"                        
 J3         OSTYK42103030      TopLayer    OSTYK42103030                 3140.001      160.000       0        "3 Circuit 0.325 (8.26mm) Barrier Block Connector, Screws with Captive Plate"                                 
 J2         OSTYK42103030      TopLayer    OSTYK42103030                 1619.803      200.000       0        "3 Circuit 0.325 (8.26mm) Barrier Block Connector, Screws with Captive Plate"                                 
-D3         "1N4007 SMD"       TopLayer    FP-1N4007_SMD-IPC_C           5430.000      1460.000      270      "Rectifier, 1Kv, 1A, Do-214Ac Rohs Compliant: Yes"                                                            
+D3         "1N4007 SMD"       TopLayer    FP-1N4007_SMD-IPC_C           5404.000      1462.000      270      "Rectifier, 1Kv, 1A, Do-214Ac Rohs Compliant: Yes"                                                            
 D2         "1N4007 SMD"       TopLayer    FP-1N4007_SMD-IPC_C           5180.000      1045.000      180      "Rectifier, 1Kv, 1A, Do-214Ac Rohs Compliant: Yes"                                                            
 D1         "1N4007 SMD"       TopLayer    FP-1N4007_SMD-IPC_C           2525.000      2150.000      0        "Rectifier, 1Kv, 1A, Do-214Ac Rohs Compliant: Yes"                                                            
 C16        10uF               TopLayer    FP-GRM188-0_1-e0_2_0_55-IPC_A 3660.000      4800.000      90       "Chip Multilayer Ceramic Capacitors for General Purpose, 0603, 10uF, X5R, 15%, 20%, 6.3V
